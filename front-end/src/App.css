@@ -79,7 +79,6 @@ button {
   border: none;
   outline: none;
   border-radius: 0.2rem;
-  cursor: pointer;
   font-size: 0.8rem;
 
 }
@@ -152,3 +151,14 @@ button:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.send-button.active{
+  background-color: black;
+  cursor: pointer;
+}
+
+.send-button{
+  background-color: #333;
+  cursor: not-allowed;
+}
+

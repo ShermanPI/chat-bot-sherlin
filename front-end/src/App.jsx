@@ -41,7 +41,10 @@ function App() {
             }}
             value={currentMessage}
           />
-          <button onClick={() => addMessage({ message: currentMessage, isBot: false })}>Enviar</button>
+          <button
+            className={`send-button ${chatThinking || !currentMessage ? "" : "active"}`}
+            onClick={() => !chatThinking || currentMessage && addMessage({ message: currentMessage, isBot: false })}>
+            Enviar</button>
         </form>
       </div>
     </main>
