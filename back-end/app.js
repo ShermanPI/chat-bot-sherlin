@@ -9,7 +9,7 @@ const port = 3000;
 app.use(bodyParser.json());
 
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: process.env.ALLOWED_HOST,
 };
 app.use(cors(corsOptions));
 
