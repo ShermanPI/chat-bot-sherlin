@@ -1,4 +1,4 @@
-export const sendMessage = async (message) => {
+export const sendMessageToChatBot = async (message) => {
     try {
         const response = await fetch(import.meta.env.VITE_SHERLIN_API, {
             method: 'POST',

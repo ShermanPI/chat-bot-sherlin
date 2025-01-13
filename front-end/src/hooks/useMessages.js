@@ -1,17 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { sendMessageToChatBot } from "../services/sendMessage";
 
 export const useMessages = () => {
-    const [messages, setMessages] = useState([
-        { message: "Hola, ¿en qué puedo ayudarte?", isBot: true },
-        { message: "Hola, ¿en qué puedo ayudarte?", isBot: false }]);
+    const [messages, setMessages] = useState([]);
 
     const [currentMessage, setCurrentMessage] = useState("");
 
-    const sendMessage = () => {
-        setMessages([...messages, { message: currentMessage, isBot: false }]);
+    const addMessage = async ({message, isBot = false}) => {
+        setMessages([...messages, { message, isBot }]);
         setCurrentMessage("");
     }
 
+    useEffect(() => {
+        // addMessage({ message: "Hola, ¿en qué puedo ayudarte?", isBot: true });
+        sendMessageToChatBot("start").then((response) => {
+            addMessage({ message: response, isBot: true });
+        });
+    }, []);
 
-    return { messages, sendMessage, currentMessage, setCurrentMessage };
+
+    return { messages, addMessage, currentMessage, setCurrentMessage };
 }
