@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect,  useState } from "react";
 import { sendMessageToChatBot } from "../services/sendMessage";
 
 export const useMessages = () => {
@@ -6,16 +6,22 @@ export const useMessages = () => {
 
     const [currentMessage, setCurrentMessage] = useState("");
 
-    const addMessage = async ({message, isBot = false}) => {
-        setMessages([...messages, { message, isBot }]);
+    const addMessage = async ({ message, isBot = false }) => {
+
+        const newMessages = [...messages, { message, isBot }];
+
+        setMessages(newMessages);
         setCurrentMessage("");
+
+        const response = await sendMessageToChatBot(message)
+        
+        setMessages([...newMessages, { message: response, isBot: true }]);
     }
 
     useEffect(() => {
-        // addMessage({ message: "Hola, ¿en qué puedo ayudarte?", isBot: true });
         sendMessageToChatBot("start").then((response) => {
-            addMessage({ message: response, isBot: true });
-        });
+            setMessages([{ message: response, isBot: true }]);
+        })
     }, []);
 
 

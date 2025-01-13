@@ -1,6 +1,6 @@
 export const sendMessageToChatBot = async (message) => {
     try {
-        const response = await fetch(import.meta.env.VITE_SHERLIN_API, {
+        const response = await fetch(`${import.meta.env.VITE_SHERLIN_API}/chat`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

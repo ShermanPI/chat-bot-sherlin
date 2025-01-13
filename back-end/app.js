@@ -9,7 +9,7 @@ const port = 3000;
 app.use(bodyParser.json());
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'http://localhost:5173',
 };
 app.use(cors(corsOptions));
 
