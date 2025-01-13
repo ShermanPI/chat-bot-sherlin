@@ -1,16 +1,21 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import "./App.css";
+import { useMessages } from "./hooks/useMessages";
 
 function App() {
-  const [messages, setMessages] = useState([
-    { message: "Hola, ¿en qué puedo ayudarte?", isBot: true },
-    { message: "Hola, ¿en qué puedo ayudarte?", isBot: false }]);
+  const { messages, sendMessage, setCurrentMessage, currentMessage } = useMessages();
+  const massageContainerRef = useRef(null);
+
+  useEffect(()=>{
+    console.log(import.meta.env.VITE_SHERLIN_API, 'import.meta.env.VITE_SHERLIN_API');
+    messages.length && massageContainerRef.current.scrollTo(0, massageContainerRef.current.scrollHeight);
+  }, [currentMessage, messages.length]);
 
   return (
     <main>
       <div className="chat-container gray-borders">
         <b>Sherlin BOT</b>
-        <div className="messages-container">
+        <div className="messages-container" ref={massageContainerRef}>
           {
             messages.map(({ message, isBot }, index) => (
 
@@ -23,10 +28,16 @@ function App() {
             ))
           }
         </div>
-        <div className="message-input-container">
-          <input type="text" placeholder="Pregúntale algo a Sherlin..." />
-          <button>Enviar</button>
-        </div>
+        <form className="message-input-container" onSubmit={(e) => e.preventDefault()}>
+          <input type="text" 
+            placeholder="Pregúntale algo a Sherlin..."
+            onInput={(e)=>{
+              setCurrentMessage(e.target.value)
+            }}
+            value={currentMessage}
+          />
+          <button onClick={sendMessage}>Enviar</button>
+        </form>
       </div>
     </main>
   );
