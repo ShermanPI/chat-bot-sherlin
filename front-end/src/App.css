@@ -9,7 +9,7 @@
   font-optical-sizing: auto;
 }
 
-body{
+body {
   font-family: 'Roboto', sans-serif;
   background-color: #f3f4f6;
   height: 100vh;
@@ -17,7 +17,7 @@ body{
 
 }
 
-.chat-container{
+.chat-container {
   background-color: white;
   border-radius: 0.5rem;
   width: 100%;
@@ -34,11 +34,11 @@ body{
   flex-direction: column;
 }
 
-.gray-borders{
+.gray-borders {
   border: 1px solid #d1d5db;
 }
 
-main{
+main {
   display: flex;
   width: 100%;
   height: 100vh;
@@ -48,12 +48,12 @@ main{
 
 }
 
-.message-input-container{
+.message-input-container {
   display: flex;
   gap: 0.6rem;
 }
 
-.message-input-container input{
+.message-input-container input {
   width: 100%;
   padding-inline: 0.8rem;
   border: 1px solid #d1d5db;
@@ -61,10 +61,13 @@ main{
   font-size: 0.8rem;
 }
 
-.messages-container{
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   height: 100%;
-  /* background-color: red; */
   overflow: auto;
+  gap: 1rem;
 }
 
 button {
@@ -80,13 +83,51 @@ button {
 
 }
 
-button:hover{
+button:hover {
   background-color: #333;
 }
 
-@media screen and (max-width: 768px){
-  .chat-container{
+@media screen and (max-width: 768px) {
+  .chat-container {
     height: 100%;
     max-height: none;
-  } 
+  }
+}
+
+.message-container {
+  border-radius: 0.2rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  width: fit-content;
+  max-width: 80%;
+
+}
+
+.message-container.user {
+  margin-left: auto;
+}
+
+.message-container.user .message-pfp {
+  order: 1;
+}
+
+.message-pfp {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.message {
+  background-color: #f3f4f6;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  font-size: 0.8rem;
+
+}
+
+.message.user {
+  background-color: black;
+  color: white;
 }
