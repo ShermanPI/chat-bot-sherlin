@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
 import "./App.css";
 import { useMessages } from "./hooks/useMessages";
+import { Loader } from "./components/loader/loader";
 
 function App() {
-  const { messages, addMessage, setCurrentMessage, currentMessage } = useMessages();
+  const { messages, addMessage, setCurrentMessage, currentMessage, chatThinking } = useMessages();
   const massageContainerRef = useRef(null);
 
   useEffect(() => {
@@ -18,7 +19,6 @@ function App() {
         <div className="messages-container small-scroll-bar" ref={massageContainerRef}>
           {
             messages.map(({ message, isBot }, index) => (
-
               <div key={index} className={`message-container ${isBot ? "bot" : "user"}`}>
                 <img className="message-pfp gray-borders" src="https://i.pinimg.com/originals/7b/7b/7b/" alt="Sherlin" />
                 <div className={`message ${isBot ? "bot" : "user"}`}>
@@ -27,6 +27,11 @@ function App() {
               </div>
             ))
           }
+          {chatThinking &&
+            <div className="message-container bot">
+              <Loader />
+            </div>}
+
         </div>
         <form className="message-input-container" onSubmit={(e) => e.preventDefault()}>
           <input type="text"
@@ -36,7 +41,7 @@ function App() {
             }}
             value={currentMessage}
           />
-          <button onClick={() => addMessage({message: currentMessage, isBot: false})}>Enviar</button>
+          <button onClick={() => addMessage({ message: currentMessage, isBot: false })}>Enviar</button>
         </form>
       </div>
     </main>
