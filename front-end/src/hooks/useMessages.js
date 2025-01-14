@@ -22,11 +22,11 @@ export const useMessages = () => {
     }
 
     useEffect(() => {
-        setChatThinking(true);
-        sendMessageToChatBot("start").then((response) => {
-            setChatThinking(false);
-            setMessages([{ message: response, isBot: true }]);
-        })
+        // setChatThinking(true);
+        setMessages([{ message: "Hola!", isBot: true }]);
+        // sendMessageToChatBot("start").then((response) => {
+        //     setChatThinking(false);
+        // })
     }, []);
 
 
