@@ -98,8 +98,8 @@ app.post('/chat', async (req, res) => {
         { role: 'system', content: "Responde como Sherlin, de manera cálida, profesional y específica." },
         { role: 'user', content: prompt },
       ],
-      max_tokens: 300, // Ajusta el límite de tokens si necesitas respuestas más largas
-      temperature: 0.7, // Controla la creatividad (valores más bajos dan respuestas más directas)
+      max_tokens: 300, 
+      temperature: 0.7,
     });
 
     const botResponse = completion.choices[0].message.content;

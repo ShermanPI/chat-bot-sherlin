@@ -117,6 +117,12 @@ button:hover {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
+  background-color: #ff99c8;
+  flex-shrink: 0;
+}
+
+.message-pfp.user{
+  background-color: #1982c4;
 }
 
 .message {

@@ -20,7 +20,8 @@ function App() {
           {
             messages.map(({ message, isBot }, index) => (
               <div key={index} className={`message-container ${isBot ? "bot" : "user"}`}>
-                <img className="message-pfp gray-borders" src="https://i.pinimg.com/originals/7b/7b/7b/" alt="Sherlin" />
+                {/* <img className="message-pfp gray-borders" src="https://i.pinimg.com/originals/7b/7b/7b/" alt="Sherlin" /> */}
+                <div className={`message-pfp gray-borders ${isBot ? "bot" : "user"}`} src="https://i.pinimg.com/originals/7b/7b/7b/" alt="Sherlin" />
                 <div className={`message ${isBot ? "bot" : "user"}`}>
                   {message}
                 </div>
