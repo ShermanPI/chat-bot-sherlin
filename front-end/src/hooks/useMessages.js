@@ -23,7 +23,7 @@ export const useMessages = () => {
 
     useEffect(() => {
         // setChatThinking(true);
-        setMessages([{ message: "Hola!", isBot: true }]);
+        setMessages([{ message: "¡Hola! Soy Sherlin, tu asistente de análisis de opiniones. Puedo ayudarte a explorar opiniones sobre productos. Pregúntame lo que quieras saber.", isBot: true }]);
         // sendMessageToChatBot("start").then((response) => {
         //     setChatThinking(false);
         // })
